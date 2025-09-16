@@ -8,33 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		CC80D4D12E79B78300D64918 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = CC80D4D02E79B78300D64918 /* RealityKitContent */; };
+		CC80D5072E79C61800D64918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC80D5012E79C61800D64918 /* Assets.xcassets */; };
+		CC80D5092E79C61800D64918 /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80D5022E79C61800D64918 /* Child.swift */; };
+		CC80D50A2E79C61800D64918 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80D5032E79C61800D64918 /* ListView.swift */; };
+		CC80D50B2E79C61800D64918 /* NaughtyListAVPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80D5052E79C61800D64918 /* NaughtyListAVPApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CC80D4CB2E79B78300D64918 /* NaughtyListAVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaughtyListAVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC80D4CF2E79B78300D64918 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		CC80D5012E79C61800D64918 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC80D5022E79C61800D64918 /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
+		CC80D5032E79C61800D64918 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		CC80D5042E79C61800D64918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC80D5052E79C61800D64918 /* NaughtyListAVPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaughtyListAVPApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CC80D4D92E79B78400D64918 /* Exceptions for "NaughtyListAVP" folder in "NaughtyListAVP" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = CC80D4CA2E79B78300D64918 /* NaughtyListAVP */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		CC80D4CD2E79B78300D64918 /* NaughtyListAVP */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CC80D4D92E79B78400D64918 /* Exceptions for "NaughtyListAVP" folder in "NaughtyListAVP" target */,
-			);
-			path = NaughtyListAVP;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CC80D4C82E79B78300D64918 /* Frameworks */ = {
@@ -51,7 +39,7 @@
 		CC80D4C22E79B78300D64918 = {
 			isa = PBXGroup;
 			children = (
-				CC80D4CD2E79B78300D64918 /* NaughtyListAVP */,
+				CC80D5062E79C61800D64918 /* NaughtyListAVP */,
 				CC80D4CE2E79B78300D64918 /* Packages */,
 				CC80D4CC2E79B78300D64918 /* Products */,
 			);
@@ -73,6 +61,18 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		CC80D5062E79C61800D64918 /* NaughtyListAVP */ = {
+			isa = PBXGroup;
+			children = (
+				CC80D5052E79C61800D64918 /* NaughtyListAVPApp.swift */,
+				CC80D5032E79C61800D64918 /* ListView.swift */,
+				CC80D5012E79C61800D64918 /* Assets.xcassets */,
+				CC80D5022E79C61800D64918 /* Child.swift */,
+				CC80D5042E79C61800D64918 /* Info.plist */,
+			);
+			path = NaughtyListAVP;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -87,9 +87,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				CC80D4CD2E79B78300D64918 /* NaughtyListAVP */,
 			);
 			name = NaughtyListAVP;
 			packageProductDependencies = (
@@ -138,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC80D5072E79C61800D64918 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC80D5092E79C61800D64918 /* Child.swift in Sources */,
+				CC80D50A2E79C61800D64918 /* ListView.swift in Sources */,
+				CC80D50B2E79C61800D64918 /* NaughtyListAVPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +166,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Naughty List";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -194,6 +196,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Naughty List";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
