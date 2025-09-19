@@ -12,6 +12,7 @@
 		CC80D5092E79C61800D64918 /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80D5022E79C61800D64918 /* Child.swift */; };
 		CC80D50A2E79C61800D64918 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80D5032E79C61800D64918 /* ListView.swift */; };
 		CC80D50B2E79C61800D64918 /* NaughtyListAVPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80D5052E79C61800D64918 /* NaughtyListAVPApp.swift */; };
+		CCC676B62E7DAEC200E4578E /* SoundFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC676B52E7DAEC200E4578E /* SoundFunctions.swift */; };
 		CCEAB03E2E7B08BA00DC3864 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEAB03D2E7B08BA00DC3864 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		CC80D5032E79C61800D64918 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		CC80D5042E79C61800D64918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC80D5052E79C61800D64918 /* NaughtyListAVPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaughtyListAVPApp.swift; sourceTree = "<group>"; };
+		CCC676B52E7DAEC200E4578E /* SoundFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundFunctions.swift; sourceTree = "<group>"; };
 		CCEAB03D2E7B08BA00DC3864 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +71,7 @@
 				CC80D5052E79C61800D64918 /* NaughtyListAVPApp.swift */,
 				CC80D5032E79C61800D64918 /* ListView.swift */,
 				CCEAB03D2E7B08BA00DC3864 /* DetailView.swift */,
+				CCC676B52E7DAEC200E4578E /* SoundFunctions.swift */,
 				CC80D5012E79C61800D64918 /* Assets.xcassets */,
 				CC80D5022E79C61800D64918 /* Child.swift */,
 				CC80D5042E79C61800D64918 /* Info.plist */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCC676B62E7DAEC200E4578E /* SoundFunctions.swift in Sources */,
 				CC80D5092E79C61800D64918 /* Child.swift in Sources */,
 				CCEAB03E2E7B08BA00DC3864 /* DetailView.swift in Sources */,
 				CC80D50A2E79C61800D64918 /* ListView.swift in Sources */,

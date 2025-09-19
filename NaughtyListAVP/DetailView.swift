@@ -7,13 +7,12 @@
 
 import SwiftUI
 import SwiftData
-import AVFAudio
 
 struct DetailView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
-    @State private var audioPlayer: AVAudioPlayer!
-    @State private var isFullSize: Bool = true
+    @State private var isBoyFullSize: Bool = true
+    @State private var isGirlFullSize: Bool = true
     @State var child: Child
     @State private var firstName: String = ""
     @State private var lastName: String = ""
@@ -25,7 +24,7 @@ struct DetailView: View {
             Rectangle()
                 .foregroundColor(.white)
                 .edgesIgnoringSafeArea(.all)
-            List {
+            NavigationStack {
                 ZStack {
                     Rectangle()
                         .foregroundColor(.white)
@@ -62,36 +61,37 @@ struct DetailView: View {
                             Image("boy")
                                 .resizable()
                                 .scaledToFit()
-                                .scaleEffect(isFullSize ? 1 : 0.9)
+                                .scaleEffect(isBoyFullSize ? 1 : 0.9)
                                 .onTapGesture {
                                     if smacks > 0 {
                                         playSound(soundName: "smack")
                                     }
-                                    isFullSize.toggle()
+                                    isBoyFullSize.toggle()
                                     withAnimation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 1.0)) {
-                                        isFullSize.toggle()
+                                        isBoyFullSize.toggle()
                                     }
                                 }
-                                .frame(width: 200, height: 200)
+                                .frame(width: 150, height: 150)
                                 
 
                             Image("girl")
                                 .resizable()
                                 .scaledToFit()
-                                .scaleEffect(isFullSize ? 1 : 0.9)
+                                .scaleEffect(isGirlFullSize ? 1 : 0.9)
                                 .onTapGesture {
                                     if smacks > 0 {
                                         playSound(soundName: "smack")
                                     }
-                                    isFullSize.toggle()
+                                    isGirlFullSize.toggle()
                                     withAnimation(.spring(response: 0.3, dampingFraction: 0.3)) {
-                                        isFullSize.toggle()
+                                        isGirlFullSize.toggle()
                                     }
                                 }
-                                .frame(width: 200, height: 200)
+                                .frame(width: 150, height: 150)
                             Spacer()
                         }
                     }
+                    .padding(.top)
                 }
                 .onAppear {
                     firstName = child.firstName
@@ -114,6 +114,32 @@ struct DetailView: View {
 //                       smacks = 1
 //                    }
                 }
+                .navigationBarBackButtonHidden()
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") {
+                            dismiss()
+                        }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Save") {
+                            // Move data from the local variables to the Child object
+                            child.firstName = firstName
+                            child.lastName = lastName
+                            child.naughty = naughty
+                            child.smacks = smacks
+                            child.notes = notes
+                            // Save a new child or save changes to an edited child
+                            modelContext.insert(child)  // Save the data to the SwiftData modelContext
+                            // Save the data to the SwiftData data store
+                            guard let _ = try? modelContext.save() else {
+                                print("😡 ERROR: Failed to save the child object to the SwiftData store")
+                                return
+                            }
+                            dismiss()
+                        }
+                    }
+                }
             }
             .foregroundStyle(Color(.black))
             .padding()
@@ -121,26 +147,6 @@ struct DetailView: View {
     }
 }
 
-extension DetailView {
-    func playSound(soundName: String) {
-        guard let soundFile = NSDataAsset(name: soundName) else {
-            print("😡 ERROR: Could not read sound file named \(soundName)")
-            return
-        }
-        do {
-            audioPlayer = try AVAudioPlayer(data: soundFile.data)
-            audioPlayer.play()
-        } catch {
-            print("😡 ERROR: -> \(error.localizedDescription) creating AVAudioPlayer")
-        }
-    }
-    
-    func stopSound() {
-        if audioPlayer != nil && audioPlayer.isPlaying {
-            audioPlayer.stop()
-        }
-    }
-}
 
 #Preview {
     DetailView(child: Child(firstName: "Bob", lastName: "Witmer", naughty: false, smacks: 0, notes: "Poster Child"))
