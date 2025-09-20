@@ -18,18 +18,29 @@ struct ListView: View {
         NavigationStack {
             List {
                 ForEach(children) { child in
-                    HStack {
-                        Image(child.naughty ? "naughty" : "nice")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 40)
-                        NavigationLink(destination: DetailView(child: child)) {
+                    
+                    NavigationLink {
+                        DetailView(child: child)
+                    } label: {
+                        HStack {
+                            Image(child.naughty ? "naughty" : "nice")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 30)
                             Text("\t\(child.firstName) \(child.lastName)")
                                 .font(.title)
                         }
-
                     }
-                    .padding(.horizontal)
+                    .swipeActions {
+                        Button("Delete", role: .destructive) {
+                            modelContext.delete(child)
+                            // Force delete in SwiftData
+                            guard let _ = try? modelContext.save() else {
+                                print("😡 ERROR: Save after delete failed!")
+                                return
+                            }
+                        }
+                    }
                 }
                 
             }
@@ -37,7 +48,7 @@ struct ListView: View {
             .listStyle(.automatic)
             .fullScreenCover(isPresented: $sheetIsPresented) {
                 NavigationStack {
-                    DetailView(child: Child(firstName: "", lastName: "", naughty: false, smacks: 0, notes: ""))
+                    DetailView(child: Child())
                 }
             }
             .toolbar {
@@ -47,7 +58,7 @@ struct ListView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
-
+                    
                 }
             }
             .padding()

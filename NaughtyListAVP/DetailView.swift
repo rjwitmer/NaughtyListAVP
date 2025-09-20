@@ -36,28 +36,22 @@ struct DetailView: View {
                         Text("Last Name:")
                         TextField("last name", text: $lastName)
                             .textFieldStyle(.roundedBorder)
-                        HStack {
-                            Text("Naughty?:")
-                            Toggle("", isOn: $naughty)
-                        }
-                        .padding(.vertical, 30)
-                        HStack {
-                            Text("Smacks Deserved:")
-                            Stepper("", value: $smacks, in: 0...5)
-                        }
-                        HStack {
-                            Spacer()
-                            Text("\(smacks)")
-                                .font(.title)
-                            Spacer()
-                        }
-
+                        
+                        Toggle("Naughty?", isOn: $naughty)
+                            .padding(.vertical, 30)
+                        
+                        Stepper("Smacks Deserved:", value: $smacks, in: 0...5)
+                        
+                        Text("\(smacks)")
+                            .font(.title)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        
                         Text("Notes:")
-                        TextField("notes", text: $notes)
+                        TextField("notes", text: $notes, axis: .vertical)
                             .textFieldStyle(.roundedBorder)
                         HStack {
                             Spacer()
-
+                            
                             Image("boy")
                                 .resizable()
                                 .scaledToFit()
@@ -71,9 +65,9 @@ struct DetailView: View {
                                         isBoyFullSize.toggle()
                                     }
                                 }
-                                .frame(width: 150, height: 150)
-                                
-
+                                .frame(height: 150)
+                            
+                            
                             Image("girl")
                                 .resizable()
                                 .scaledToFit()
@@ -87,13 +81,13 @@ struct DetailView: View {
                                         isGirlFullSize.toggle()
                                     }
                                 }
-                                .frame(width: 150, height: 150)
+                                .frame(height: 150)
                             Spacer()
                         }
                     }
                     .padding(.top)
                 }
-                .onAppear {
+                .onAppear {     // This could be alternatively done with an init
                     firstName = child.firstName
                     lastName = child.lastName
                     naughty = child.naughty
@@ -102,17 +96,17 @@ struct DetailView: View {
                 }
                 .onChange(of: smacks) {
                     naughty = (smacks == 0) ? false : true
-//                    if smacks == 0 {
-//                        naughty = false
-//                    } else {
-//                        naughty = true
-//                    }
+                    //                    if smacks == 0 {
+                    //                        naughty = false
+                    //                    } else {
+                    //                        naughty = true
+                    //                    }
                 }
                 .onChange(of: naughty) {
                     smacks = naughty ? 1 : 0
-//                    if naughty && smacks == 0 {
-//                       smacks = 1
-//                    }
+                    //                    if naughty && smacks == 0 {
+                    //                       smacks = 1
+                    //                    }
                 }
                 .navigationBarBackButtonHidden()
                 .toolbar {
@@ -131,7 +125,7 @@ struct DetailView: View {
                             child.notes = notes
                             // Save a new child or save changes to an edited child
                             modelContext.insert(child)  // Save the data to the SwiftData modelContext
-                            // Save the data to the SwiftData data store
+                            // Force a save of the data to the SwiftData data store
                             guard let _ = try? modelContext.save() else {
                                 print("😡 ERROR: Failed to save the child object to the SwiftData store")
                                 return
@@ -149,5 +143,7 @@ struct DetailView: View {
 
 
 #Preview {
-    DetailView(child: Child(firstName: "Bob", lastName: "Witmer", naughty: false, smacks: 0, notes: "Poster Child"))
+    //    DetailView(child: Child(firstName: "Bob", lastName: "Witmer", naughty: false, smacks: 0, notes: "Poster Child"))
+    DetailView(child: Child())
+        .modelContainer(for: Child.self, inMemory: true)
 }
